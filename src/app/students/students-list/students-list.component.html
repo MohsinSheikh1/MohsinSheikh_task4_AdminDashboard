@@ -1,0 +1,76 @@
+<app-header></app-header>
+<h1>Student Details</h1>
+<button mat-raised-button color="primary" routerLink="/create">Add Student</button>
+<table mat-table [dataSource]="students">
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element"> {{element._id.slice(-6)}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="phoneNo">
+      <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+      <td mat-cell *matCellDef="let element"> {{element.phoneNo}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef>Birth Date</th>
+      <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
+      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="entryYear">
+      <th mat-header-cell *matHeaderCellDef>Year Entered</th>
+      <td mat-cell *matCellDef="let element"> {{element.entryYear}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="semester">
+      <th mat-header-cell *matHeaderCellDef>Semester</th>
+      <td mat-cell *matCellDef="let element"> {{element.semester}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> <a mat-raised-button color="warn" (click)="onDelete(element._id)">Delete</a> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> <a mat-raised-button color="primary" [routerLink]="['/edit', element._id]">Edit</a> </td>
+    </ng-container>
+
+
+
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>

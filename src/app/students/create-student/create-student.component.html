@@ -1,0 +1,147 @@
+<app-header></app-header>
+<br>
+<div style="text-align: end; position: relative; bottom: 70px; right: 10px">
+  <button mat-raised-button routerLink="/">Back</button>
+</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>Add a Student</mat-card-title>
+      <mat-card-subtitle>Student Input Form</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+
+  <form (submit)="onSaveStudent(studentForm)" #studentForm="ngForm">
+    <mat-card-content>
+      <h2 class="form-headers">Student Name Info</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input
+        placeholder="First Name"
+        matInput
+        name="firstName"
+        type="text"
+        [ngModel] = "student?.firstName"
+        required
+        minlength="3"
+        #firstName="ngModel"
+        >
+        <mat-error *ngIf="firstName.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+      </mat-form-field>
+      <span class="inline-spacing"></span>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input
+        placeholder="Last Name"
+        matInput
+        name="lastName"
+        type="text"
+        [ngModel] = 'student?.lastName'
+        required
+        minlength="3"
+        #lastName="ngModel"
+        >
+        <mat-error *ngIf="lastName.invalid">Please enter correct last name (example: Mohsin)</mat-error>
+      </mat-form-field>
+
+      <h2 class="form-headers">Contact Info</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+        placeholder="Email"
+        matInput
+        name="email"
+        type="email"
+        [ngModel] = 'student?.email'
+        required
+        minlength="3"
+        #email="ngModel"
+        >
+        <mat-error *ngIf="email.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+      </mat-form-field>
+      <span class="inline-spacing"></span>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone No</mat-label>
+        <input
+        placeholder="Phone No"
+        matInput
+        name="phoneNo"
+        type="text"
+        [ngModel] = 'student?.phoneNo'
+        required
+        minlength="3"
+        #phoneNo="ngModel"
+        >
+        <mat-error *ngIf="phoneNo.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+      </mat-form-field>
+
+      <h2 class="form-headers">General Information</h2>
+
+      <mat-radio-group name="gender" #gender="ngModel" [ngModel]='student?.gender' required>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+
+      <span class="inline-spacing"></span>
+      <span class="inline-spacing"></span>
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input
+        placeholder="Date of Birth"
+        matInput
+        name="birthDate"
+        type="date"
+        [ngModel] = "student?.birthDate"
+        required
+        #birthDate="ngModel"
+        >
+        <mat-error *ngIf="birthDate.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+      </mat-form-field>
+
+      <h2 class="form-headers">Semester Information</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Entry Year</mat-label>
+        <mat-select name="entryYear" #entryYear="ngModel" [ngModel]="student?.entryYear" required>
+          <mat-option value="2019">
+            2019
+          </mat-option>
+          <mat-option value="2020">
+            2020
+          </mat-option>
+          <mat-option value="2021">
+            2021
+          </mat-option>
+          <mat-option value="2022">
+            2022
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <span class="inline-spacing"></span>
+      <mat-form-field appearance="outline">
+        <mat-label>Semester</mat-label>
+        <mat-select name="semester" #semester="ngModel" [ngModel]="student?.semester" required>
+          <mat-option value="1st">
+            1st
+          </mat-option>
+          <mat-option value="2nd">
+            2nd
+          </mat-option>
+          <mat-option value="3rd">
+            3rd
+          </mat-option>
+          <mat-option value="4th" *ngFor="let i of ['4', '5', '6', '7', '8']" [value]="i + 'th'">
+            {{i}}th
+          </mat-option>
+
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Save Student</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

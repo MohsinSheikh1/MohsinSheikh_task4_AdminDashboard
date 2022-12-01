@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  padding: 0 50px;
+  margin-top: 80px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 2.5rem;
+  color: #3f51b5;
+}
+
+button {
+  float: right;
+  margin-right: 50px;
+}
