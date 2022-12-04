@@ -1,13 +1,13 @@
 <app-header></app-header>
 <br>
-<div style="text-align: end; position: relative; bottom: 70px; right: 10px">
-  <button mat-raised-button routerLink="/">Back</button>
+<div style="text-align: end; position: relative; bottom: 70px; right: 120px">
+  <button mat-raised-button routerLink="/view">Back</button>
 </div>
 <mat-card>
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>Add a Student</mat-card-title>
-      <mat-card-subtitle>Student Input Form</mat-card-subtitle>
+      <mat-card-subtitle style="text-align: center;">Student Input Form</mat-card-subtitle>
     </mat-card-title-group>
   </mat-card-header>
 
@@ -25,8 +25,9 @@
         required
         minlength="3"
         #firstName="ngModel"
+        pattern="^[a-zA-z]{2,15}$"
         >
-        <mat-error *ngIf="firstName.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+        <mat-error *ngIf="firstName.invalid">Can only use letters and between 2 to 15 characters (Example: Mohsin)</mat-error>
       </mat-form-field>
       <span class="inline-spacing"></span>
       <mat-form-field appearance="outline">
@@ -40,8 +41,9 @@
         required
         minlength="3"
         #lastName="ngModel"
+        pattern="^[a-zA-z]{2,15}$"
         >
-        <mat-error *ngIf="lastName.invalid">Please enter correct last name (example: Mohsin)</mat-error>
+        <mat-error *ngIf="lastName.invalid">Can only use letters and between 2 to 15 characters (Example: Sheikh)</mat-error>
       </mat-form-field>
 
       <h2 class="form-headers">Contact Info</h2>
@@ -58,7 +60,7 @@
         minlength="3"
         #email="ngModel"
         >
-        <mat-error *ngIf="email.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+        <mat-error *ngIf="email.invalid">Please enter a valid email address (Example: name@example.com)</mat-error>
       </mat-form-field>
       <span class="inline-spacing"></span>
       <mat-form-field appearance="outline">
@@ -72,8 +74,9 @@
         required
         minlength="3"
         #phoneNo="ngModel"
+        pattern="[0][3][0-9]{9}"
         >
-        <mat-error *ngIf="phoneNo.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+        <mat-error *ngIf="phoneNo.invalid">Please enter correct phone no (Example: 03115643979)</mat-error>
       </mat-form-field>
 
       <h2 class="form-headers">General Information</h2>
@@ -95,8 +98,9 @@
         [ngModel] = "student?.birthDate"
         required
         #birthDate="ngModel"
+        pattern="(((199[5-9])|(200[0-7]))-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"
         >
-        <mat-error *ngIf="birthDate.invalid">Please enter correct first name (example: Mohsin)</mat-error>
+        <mat-error *ngIf="birthDate.invalid">Incorrect date</mat-error>
       </mat-form-field>
 
       <h2 class="form-headers">Semester Information</h2>

@@ -1,0 +1,25 @@
+<mat-card>
+<h2>Admin Dashboard</h2>
+<p>Sign up to dashboard</p>
+<form (submit)="onSignUp(signupForm)" #signupForm="ngForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" name="email" matInput placeholder="Email" #emailInput="ngModel" ngModel email required>
+    <mat-error *ngIf="!emailInput.valid">Please enter a valid Email</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" name="password" matInput placeholder="Password" #passwordInput="ngModel" ngModel required>
+    <mat-error *ngIf="!passwordInput.valid">Please enter a valid Password</mat-error>
+  </mat-form-field>
+  <mat-error *ngIf="invalidCredentials" style="margin: 0; padding: 0; margin-left: 2px">Email Already Taken!</mat-error>
+  <mat-card-actions>
+    <button mat-raised-button type="submit" color="accent">Sign Up</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" routerLink="/">Back To Login</button>
+  </mat-card-actions>
+
+</form>
+</mat-card>

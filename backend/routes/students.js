@@ -2,8 +2,10 @@ const express = require('express');
 const app = express.Router();
 const Student = require('../models/student');
 
+const checkAuth = require('../middleware/check-auth');
 
-app.post('', (req, res, next) => {
+
+app.post('', checkAuth, (req, res, next) => {
   const student = new Student({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -19,7 +21,7 @@ app.post('', (req, res, next) => {
   });
 });
 
-app.put("/:id", (req, res, next) => {
+app.put("/:id", checkAuth, (req, res, next) => {
   const student = new Student({
     _id: req.body._id,
     firstName: req.body.firstName,
@@ -37,7 +39,7 @@ app.put("/:id", (req, res, next) => {
   })
 })
 
-app.get('', (req, res, next) => {
+app.get('', checkAuth, (req, res, next) => {
   Student.find()
     .then((documents) => {
       res.status(200).json({
@@ -47,7 +49,7 @@ app.get('', (req, res, next) => {
     });
 });
 
-app.get("/:id", (req, res, next) => {
+app.get("/:id", checkAuth, (req, res, next) => {
   Student.findById(req.params.id).then((student) => {
     if (student) {
       res.status(200).json({message: 'Found Post', student});
@@ -57,7 +59,7 @@ app.get("/:id", (req, res, next) => {
   })
 })
 
-app.delete('/:id', (req, res, next) => {
+app.delete('/:id', checkAuth, (req, res, next) => {
   Student.deleteOne({_id: req.params.id}).then((result) => {
     res.status(201).json({message: 'Student Data successfully deleted.'});
   });

@@ -1,0 +1,27 @@
+<mat-card>
+  <h2>Admin Dashboard</h2>
+  <p>Login to dashboard</p>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" name="email" matInput placeholder="Email" #emailInput="ngModel" ngModel email required>
+      <mat-error *ngIf="!emailInput.valid">Please enter a valid Email</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" name="password" matInput placeholder="Password" #passwordInput="ngModel" ngModel required>
+      <mat-error *ngIf="!passwordInput.valid">Password is required</mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="invalidCredentials">Email not found or password is incorrect</mat-error>
+
+    <mat-card-actions>
+      <button mat-raised-button type="submit" color="accent">Login</button>
+      <span class="spacer"></span>
+      <button mat-raised-button color="accent" routerLink="/signup">Sign Up</button>
+    </mat-card-actions>
+
+  </form>
+</mat-card>
